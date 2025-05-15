@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recompensas</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-links">
+      <a href="dashboard.html">Inicio</a>
+      <a href="dispositivos.html">Dispositivos</a>
+      <a href="historial.html">Historial</a>
+      <a href="desafios.html">Desafíos</a>
+      <a href="metas.html">Metas</a>
+      <a href="recompensas.html">Recompensas</a>
+    </div>
+    <div class="session-info">
+      <span>Sesión activa</span>
+      <button id="logoutBtn">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Tu puntuación</h2>
+      <p>Has ahorrado <strong><span id="kwAhorro">30</span> kWh</strong> este mes</p>
+      <p><strong><span id="puntos">300</span> puntos</strong> acumulados</p>
+    </section>
+
+    <section>
+      <h2>Recompensas disponibles</h2>
+      <ul class="reward-list">
+        <li>
+          <h3>🎁 Tarjeta de regalo de tienda</h3>
+          <p>Canjea por 200 puntos</p>
+          <button class="redeem-btn">Canjear</button>
+        </li>
+        <li>
+          <h3>🌌 Pase al Planetario de Medellín</h3>
+          <p>Canjea por 250 puntos</p>
+          <button class="redeem-btn">Canjear</button>
+        </li>
+        <li>
+          <h3>🔬 Pase al Parque Explora</h3>
+          <p>Canjea por 300 puntos</p>
+          <button class="redeem-btn">Canjear</button>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="scripts.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const puntosEl = document.getElementById('puntos');
+      const ahorroEl = document.getElementById('kwAhorro');
+      const botones = document.querySelectorAll('.redeem-btn');
+
+      let puntos = parseInt(localStorage.getItem('puntos') || '300'); // Simulado
+      let ahorro = Math.floor(puntos / 10); // 10 puntos por kWh ahorrado
+
+      puntosEl.textContent = puntos;
+      ahorroEl.textContent = ahorro;
+
+      botones.forEach(btn => {
+        btn.addEventListener('click', () => {
+          alert('¡Recompensa canjeada! (simulado)');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

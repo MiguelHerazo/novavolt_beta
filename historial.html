@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historial</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="left-space"></div>
+    <div class="center-header">
+      <h1>NovaVolt</h1>
+      <nav class="nav-links">
+        <a href="dashboard.html">Inicio</a>
+        <a href="dispositivos.html">Dispositivos</a>
+        <a href="historial.html">Historial</a>
+        <a href="desafios.html">Desafíos</a>
+        <a href="metas.html">Metas</a>
+        <a href="recompensas.html">Recompensas</a>
+      </nav>
+    </div>
+    <div class="session-info">
+      <span>Sesión activa</span>
+      <button id="logoutBtn">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main style="padding-top: 120px;">
+    <section>
+      <h2>Historial de Consumo Mensual</h2>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <canvas id="historialChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.getElementById('logoutBtn').onclick = () => {
+      alert("Sesión cerrada");
+      window.location.href = "index.html";
+    };
+
+    const ctx = document.getElementById('historialChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+        datasets: [{
+          label: 'Consumo (kWh)',
+          data: [32.4, 30.1, 28.9, 33.7],
+          fill: true,
+          tension: 0.4,
+          backgroundColor: 'rgba(52, 152, 219, 0.2)',
+          borderColor: '#3498db',
+          pointBackgroundColor: '#2980b9',
+          pointRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#333',
+              font: {
+                size: 14
+              }
+            }
+          },
+          x: {
+            ticks: {
+              color: '#333',
+              font: {
+                size: 14
+              }
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              color: '#333',
+              font: {
+                size: 16
+              }
+            }
+          },
+          tooltip: {
+            backgroundColor: '#333',
+            titleFont: { size: 14 },
+            bodyFont: { size: 14 }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

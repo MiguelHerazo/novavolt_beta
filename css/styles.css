@@ -1,0 +1,257 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  padding-top: 70px;
+}
+
+/* Header/Navbar */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #004080;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+header .nav-left h1 {
+  font-size: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Session info a la derecha */
+.session-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+#logoutBtn {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+#logoutBtn:hover {
+  background-color: #cc0000;
+}
+
+/* Main content */
+main {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Cards / Sections */
+section {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+/* Icons for devices */
+.device-list {
+  list-style: none;
+  padding: 0;
+}
+
+.device-list li {
+  font-size: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.device-list i {
+  margin-right: 10px;
+  color: #007bff;
+  font-size: 20px;
+}
+
+/* Desafíos */
+.challenge {
+  margin: 20px 0;
+}
+
+.progress-bar {
+  background-color: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 25px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.progress {
+  background-color: #28a745;
+  height: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+/* Páginas de login y registro */
+.auth-body {
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-container input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.auth-container button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-container button:hover {
+  background-color: #2980b9;
+}
+
+.auth-container a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+form input[type="number"] {
+  padding: 8px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #004080;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #003060;
+}
+
+label input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.reward-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reward-list li {
+  background-color: #fff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.reward-list h3 {
+  margin-bottom: 5px;
+}
+
+.redeem-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.redeem-btn:hover {
+  background-color: #0056b3;
+}

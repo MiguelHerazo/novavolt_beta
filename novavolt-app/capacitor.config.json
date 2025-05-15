@@ -1,0 +1,10 @@
+{
+  "appId": "com.novavolt.app",
+  "appName": "NovaVolt",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
