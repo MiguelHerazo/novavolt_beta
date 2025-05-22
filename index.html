@@ -1,21 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - NovaVolt</title>
+  <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>
   <main class="auth-container">
+    <img src="/assets/novavolt_logo.jpg" alt="NovaVolt Logo" />
     <h1>Iniciar Sesión</h1>
     <form onsubmit="loginUser(event)">
       <input type="email" placeholder="Correo electrónico" required id="login-email">
-      <input type="password" placeholder="Contraseña" required id="login-password">
+      
+      <div class="password-container">
+        <input type="password" placeholder="Contraseña" required id="login-password">
+        <span class="toggle-password" onclick="togglePassword()"></span>
+      </div>
+
       <button type="submit">Entrar</button>
       <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
     </form>
   </main>
-  <script src="/js/scripts.js"></script>
+
+  <script>
+    function togglePassword() {
+      const passField = document.getElementById("login-password");
+      passField.type = passField.type === "password" ? "text" : "password";
+    }
+
+    function loginUser(event) {
+      event.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const pass = document.getElementById("login-password").value;
+
+      if (!email || !pass) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      alert("Inicio de sesión exitoso ✅");
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 1000);
+    }
+  </script>
 </body>
 </html>

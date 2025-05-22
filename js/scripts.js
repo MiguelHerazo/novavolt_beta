@@ -151,3 +151,33 @@ function actualizarGraficoDonut() {
     });
   }
 }
+
+  // === META DE CONSUMO ===
+  const metaForm = document.getElementById("metaForm");
+  const metaKwInput = document.getElementById("metaKw");
+  const alertaCheckbox = document.getElementById("alertaConsumo");
+  const metaGuardada = document.getElementById("metaGuardada");
+
+  if (metaKwInput && metaForm && metaGuardada) {
+    // Cargar meta guardada
+    const metaGuardadaValor = localStorage.getItem("metaKw");
+    const notificar = localStorage.getItem("alertaConsumo");
+
+    if (metaGuardadaValor) {
+      metaKwInput.value = metaGuardadaValor;
+      metaGuardada.textContent = `Meta actual: ${metaGuardadaValor} kWh/día`;
+    }
+
+    if (notificar === "true") {
+      alertaCheckbox.checked = true;
+    }
+
+    // Guardar nueva meta
+    metaForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nuevaMeta = parseFloat(metaKwInput.value);
+      localStorage.setItem("metaKw", nuevaMeta);
+      localStorage.setItem("alertaConsumo", alertaCheckbox.checked);
+      metaGuardada.textContent = `Meta actual: ${nuevaMeta} kWh/día`;
+    });
+  }

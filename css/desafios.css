@@ -1,0 +1,206 @@
+/* Reset básico y estilo general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  padding-top: 100px; /* espacio para el header fijo */
+}
+
+/* Header como en las otras pestañas */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #004080;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.center-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.center-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #00d1b2;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.session-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+#logoutBtn {
+  background-color: #ff3860;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+}
+
+#logoutBtn:hover {
+  background-color: #e03157;
+}
+
+/* Contenedor principal */
+.desafios-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Estilo de cada desafío */
+.desafio {
+  background-color: white;
+  border-left: 6px solid #00d1b2;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.desafio h2 {
+  margin-bottom: 0.5rem;
+}
+
+.desafio p {
+  margin-bottom: 1rem;
+}
+
+.progreso {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 20px;
+  margin-bottom: 1rem;
+}
+
+.barra {
+  height: 100%;
+  background-color: #00d1b2;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-size: 0.9rem;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Desafíos completados */
+.desafio.completado {
+  opacity: 0.7;
+}
+
+.desafio.completado .barra {
+  background-color: #28a745;
+}
+
+/* Botón */
+.desafio button {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.desafio button:hover {
+  background-color: #002b5c;
+}
+
+.desafio button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+}
+
+.modal-content ul {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+  color: #333;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s ease;
+}
+
+.close:hover {
+  color: #333;
+}

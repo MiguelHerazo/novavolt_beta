@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Recompensas</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Recompensas - NovaVolt</title>
+  <link rel="stylesheet" href="css/recompensas.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
+
   <header>
-    <div class="nav-links">
-      <a href="dashboard.html">Inicio</a>
-      <a href="dispositivos.html">Dispositivos</a>
-      <a href="historial.html">Historial</a>
-      <a href="desafios.html">Desafíos</a>
-      <a href="metas.html">Metas</a>
-      <a href="recompensas.html">Recompensas</a>
+    <div class="left-space"></div>
+    <div class="center-header">
+      <h1>NovaVolt</h1>
+      <nav class="nav-links">
+        <a href="dashboard.html">Inicio</a>
+        <a href="dispositivos.html">Dispositivos</a>
+        <a href="historial.html">Historial</a>
+        <a href="desafios.html">Desafíos</a>
+        <a href="recompensas.html">Recompensas</a>
+      </nav>
     </div>
     <div class="session-info">
       <span>Sesión activa</span>
@@ -22,52 +27,50 @@
     </div>
   </header>
 
-  <main>
-    <section>
-      <h2>Tu puntuación</h2>
-      <p>Has ahorrado <strong><span id="kwAhorro">30</span> kWh</strong> este mes</p>
-      <p><strong><span id="puntos">300</span> puntos</strong> acumulados</p>
+  <main class="recompensas-container">
+    <section class="puntos">
+      <h2>Tus Puntos</h2>
+      <div class="puntos-box">
+        <i class="fas fa-bolt"></i> <span id="puntosUsuario">150</span> kWh ahorrados
+      </div>
     </section>
 
-    <section>
-      <h2>Recompensas disponibles</h2>
-      <ul class="reward-list">
-        <li>
-          <h3>🎁 Tarjeta de regalo de tienda</h3>
-          <p>Canjea por 200 puntos</p>
-          <button class="redeem-btn">Canjear</button>
-        </li>
-        <li>
-          <h3>🌌 Pase al Planetario de Medellín</h3>
-          <p>Canjea por 250 puntos</p>
-          <button class="redeem-btn">Canjear</button>
-        </li>
-        <li>
-          <h3>🔬 Pase al Parque Explora</h3>
-          <p>Canjea por 300 puntos</p>
-          <button class="redeem-btn">Canjear</button>
-        </li>
-      </ul>
+    <section class="recompensas-lista">
+      <h2>Recompensas Disponibles</h2>
+
+      <div class="recompensa">
+        <i class="fas fa-gift"></i>
+        <div>
+          <h3>Tarjeta regalo $10.000</h3>
+          <p>Disponible en tiendas seleccionadas</p>
+        </div>
+        <button class="canjear">Canjear (100 pts)</button>
+      </div>
+
+      <div class="recompensa">
+        <i class="fas fa-microscope"></i>
+        <div>
+          <h3>Pase al Parque Explora</h3>
+          <p>Vive una experiencia interactiva de ciencia</p>
+        </div>
+        <button class="canjear" disabled>Canjear (200 pts)</button>
+      </div>
+
+      <div class="recompensa">
+        <i class="fas fa-star"></i>
+        <div>
+          <h3>Pase al Planetario</h3>
+          <p>Observa las estrellas y aprende del universo</p>
+        </div>
+        <button class="canjear">Canjear (150 pts)</button>
+      </div>
     </section>
   </main>
 
-  <script src="scripts.js" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const puntosEl = document.getElementById('puntos');
-      const ahorroEl = document.getElementById('kwAhorro');
-      const botones = document.querySelectorAll('.redeem-btn');
-
-      let puntos = parseInt(localStorage.getItem('puntos') || '300'); // Simulado
-      let ahorro = Math.floor(puntos / 10); // 10 puntos por kWh ahorrado
-
-      puntosEl.textContent = puntos;
-      ahorroEl.textContent = ahorro;
-
-      botones.forEach(btn => {
-        btn.addEventListener('click', () => {
-          alert('¡Recompensa canjeada! (simulado)');
-        });
+    document.querySelectorAll(".canjear:not([disabled])").forEach(btn => {
+      btn.addEventListener("click", () => {
+        alert("¡Recompensa canjeada! 🎉 Pronto recibirás un correo.");
       });
     });
   </script>

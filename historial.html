@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Historial</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historial - NovaVolt</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
@@ -14,9 +15,8 @@
       <nav class="nav-links">
         <a href="dashboard.html">Inicio</a>
         <a href="dispositivos.html">Dispositivos</a>
-        <a href="historial.html">Historial</a>
+        <a href="historial.html" class="active">Historial</a>
         <a href="desafios.html">Desafíos</a>
-        <a href="metas.html">Metas</a>
         <a href="recompensas.html">Recompensas</a>
       </nav>
     </div>
@@ -27,75 +27,81 @@
   </header>
 
   <main style="padding-top: 120px;">
-    <section>
+    <section class="card">
       <h2>Historial de Consumo Mensual</h2>
-      <div style="max-width: 800px; margin: 0 auto;">
-        <canvas id="historialChart"></canvas>
+      <canvas id="historialChart" height="100"></canvas>
+    </section>
+
+    <section class="card">
+      <h3>Detalle Semanal</h3>
+
+      <div class="semana">
+        <h4>Semana 1</h4>
+        <ul>
+          <li>Lunes: 4.2 kWh</li>
+          <li>Martes: 5.1 kWh</li>
+          <li>Miércoles: 4.8 kWh</li>
+          <li>Jueves: 5.5 kWh</li>
+          <li>Viernes: 3.9 kWh</li>
+          <li>Sábado: 4.0 kWh</li>
+          <li>Domingo: 5.0 kWh</li>
+        </ul>
+      </div>
+
+      <div class="semana">
+        <h4>Semana 2</h4>
+        <ul>
+          <li>Lunes: 3.8 kWh</li>
+          <li>Martes: 4.4 kWh</li>
+          <li>Miércoles: 4.9 kWh</li>
+          <li>Jueves: 4.7 kWh</li>
+          <li>Viernes: 4.3 kWh</li>
+          <li>Sábado: 3.5 kWh</li>
+          <li>Domingo: 3.9 kWh</li>
+        </ul>
       </div>
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    document.getElementById('logoutBtn').onclick = () => {
-      alert("Sesión cerrada");
-      window.location.href = "index.html";
-    };
-
-    const ctx = document.getElementById('historialChart').getContext('2d');
+    // Gráfico del historial mensual
+    const ctx = document.getElementById("historialChart").getContext("2d");
     new Chart(ctx, {
-      type: 'line',
+      type: "bar",
       data: {
-        labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+        labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
         datasets: [{
-          label: 'Consumo (kWh)',
-          data: [32.4, 30.1, 28.9, 33.7],
-          fill: true,
-          tension: 0.4,
-          backgroundColor: 'rgba(52, 152, 219, 0.2)',
-          borderColor: '#3498db',
-          pointBackgroundColor: '#2980b9',
-          pointRadius: 6
+          label: "Consumo semanal (kWh)",
+          data: [32.5, 29.5, 30.8, 28.9],
+          backgroundColor: [
+            "#3498db",
+            "#2ecc71",
+            "#f39c12",
+            "#e74c3c"
+          ],
+          borderRadius: 8
         }]
       },
       options: {
         responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              color: '#333',
-              font: {
-                size: 14
-              }
-            }
-          },
-          x: {
-            ticks: {
-              color: '#333',
-              font: {
-                size: 14
-              }
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => `${ctx.parsed.y} kWh`
             }
           }
         },
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: {
-              color: '#333',
-              font: {
-                size: 16
-              }
-            }
-          },
-          tooltip: {
-            backgroundColor: '#333',
-            titleFont: { size: 14 },
-            bodyFont: { size: 14 }
-          }
+        scales: {
+          y: { beginAtZero: true }
         }
       }
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      alert("Sesión cerrada");
+      window.location.href = "index.html";
     });
   </script>
 </body>

@@ -1,68 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dispositivos - NovaVolt</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/dispositivos.css" />
 </head>
 <body>
-  <header>
-    <h1>NovaVolt</h1>
-    <div class="nav-toggle">&#9776;</div>
-    <nav class="sidebar">
+
+  <header class="main-header">
+    <div class="header-left">
+      <h1>NovaVolt</h1>
+    </div>
+    <nav class="nav-links">
       <a href="dashboard.html">Inicio</a>
       <a href="dispositivos.html" class="active">Dispositivos</a>
       <a href="historial.html">Historial</a>
       <a href="desafios.html">Desafíos</a>
-      <a href="metas.html">Metas</a>
       <a href="recompensas.html">Recompensas</a>
     </nav>
     <div class="session-info">
-      <span>Sesíon activa</span>
+      <span>Sesión activa</span>
       <button id="logoutBtn">Cerrar sesión</button>
     </div>
+    <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
   </header>
 
-  <main>
-    <section>
-      <h2>Dispositivos</h2>
-      <button id="btnAgregar">Agregar dispositivo</button>
+  <main class="device-container">
+    <section class="device-summary">
+      <h2>Resumen de Consumo</h2>
+      <canvas id="donutChart" width="300" height="300"></canvas>
+    </section>
 
-      <ul id="deviceList" class="device-list">
-        <!-- Dispositivos aparecerán aquí -->
+    <section class="device-list">
+      <h2>Mis Dispositivos</h2>
+      <ul id="listaDispositivos" class="device-items">
+        <!-- Se agregarán aquí dinámicamente -->
       </ul>
+    </section>
 
-      <canvas id="donutChart" width="400" height="400"></canvas>
+    <section class="agregar-dispositivo">
+      <h2>Agregar Dispositivo</h2>
+      <div class="switch-selector">
+        <button id="btnSensor">Con Sensor</button>
+        <button id="btnManual">Sin Sensor</button>
+      </div>
+
+      <form id="formSensor" class="formulario hidden">
+        <label for="nombreSensor">Nombre:</label>
+        <input type="text" id="nombreSensor" required />
+        <label for="consumoSensor">Consumo estimado (kWh):</label>
+        <input type="number" id="consumoSensor" min="0" step="0.1" required />
+        <button type="submit">Agregar con Sensor</button>
+      </form>
+
+      <form id="formManual" class="formulario hidden">
+        <label for="nombreManual">Nombre:</label>
+        <input type="text" id="nombreManual" required />
+        <label for="horas">Horas de uso:</label>
+        <input type="number" id="horas" min="0" step="0.1" required />
+        <label for="potencia">Potencia (W):</label>
+        <input type="number" id="potencia" min="0" step="1" required />
+        <button type="submit">Agregar sin Sensor</button>
+      </form>
     </section>
   </main>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Agregar dispositivo</h3>
-      <button id="btnSensor">Con sensor</button>
-      <button id="btnManual">Sin sensor</button>
-
-      <form id="formSensor" class="form-hidden">
-        <input type="text" id="codigoSensor" placeholder="Código del sensor" required>
-        <input type="text" id="nombreSensor" placeholder="Nombre del dispositivo" required>
-        <button type="submit">Agregar</button>
-      </form>
-
-      <form id="formManual" class="form-hidden">
-        <input type="text" id="nombreManual" placeholder="Nombre del dispositivo" required>
-        <input type="text" id="tipoManual" placeholder="Tipo (ej: Lavadora)" required>
-        <input type="number" id="kwHora" placeholder="Consumo por hora (kW)" required>
-        <input type="number" id="horasUso" placeholder="Horas de uso" required>
-        <button type="submit">Agregar</button>
-      </form>
-    </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="js/scripts.js"></script>
+  <script>
+    const btnSensor = document.getElementById("btnSensor");
+    const btnManual = document.getElementById("btnManual");
+    const formSensor = document.getElementById("formSensor");
+    const formManual = document.getElementById("formManual");
+
+    const lista = document.getElementById("listaDispositivos");
+    let dispositivos = [];
+
+    const colores = [
+      '#007bff', '#28a745', '#ffc107', '#dc3545',
+      '#6f42c1', '#17a2b8', '#e83e8c', '#fd7e14'
+    ];
+
+    const ctx = document.getElementById("donutChart").getContext("2d");
+    let chart = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: [],
+        datasets: [{
+          data: [],
+          backgroundColor: [],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+
+    const actualizarListaYGrafico = () => {
+      lista.innerHTML = "";
+      chart.data.labels = [];
+      chart.data.datasets[0].data = [];
+      chart.data.datasets[0].backgroundColor = [];
+
+      dispositivos.forEach((d, i) => {
+        const item = document.createElement("li");
+        item.innerHTML = `<span class="icon">⚡</span><strong>${d.nombre}</strong> - ${d.consumo} kWh`;
+        lista.appendChild(item);
+
+        chart.data.labels.push(d.nombre);
+        chart.data.datasets[0].data.push(d.consumo);
+        chart.data.datasets[0].backgroundColor.push(colores[i % colores.length]);
+      });
+
+      chart.update();
+    };
+
+    btnSensor.addEventListener("click", () => {
+      formSensor.classList.remove("hidden");
+      formManual.classList.add("hidden");
+    });
+
+    btnManual.addEventListener("click", () => {
+      formManual.classList.remove("hidden");
+      formSensor.classList.add("hidden");
+    });
+
+    formSensor.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById("nombreSensor").value;
+      const consumo = parseFloat(document.getElementById("consumoSensor").value);
+      dispositivos.push({ nombre, consumo });
+      actualizarListaYGrafico();
+      formSensor.reset();
+    });
+
+    formManual.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById("nombreManual").value;
+      const horas = parseFloat(document.getElementById("horas").value);
+      const potencia = parseFloat(document.getElementById("potencia").value);
+      const consumo = (horas * potencia) / 1000;
+      dispositivos.push({ nombre, consumo });
+      actualizarListaYGrafico();
+      formManual.reset();
+    });
+
+    // Cierre de sesión
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      alert("Sesión cerrada");
+      window.location.href = "index.html";
+    });
+
+    // Menú móvil
+    document.querySelector(".menu-toggle").addEventListener("click", () => {
+      document.querySelector(".nav-links").classList.toggle("open");
+    });
+  </script>
 </body>
 </html>

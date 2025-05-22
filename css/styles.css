@@ -57,27 +57,67 @@ header .nav-left h1 {
 }
 
 /* Session info a la derecha */
+/* HEADER */
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  background-color: #1abc9c;
+  color: white;
+}
+
+/* SESSION INFO */
 .session-info {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 14px;
+  gap: 10px;
 }
 
 #logoutBtn {
-  background-color: #ff4d4d;
-  border: none;
+  background-color: #e74c3c;
   color: white;
-  padding: 6px 12px;
-  border-radius: 6px;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
 }
 
 #logoutBtn:hover {
-  background-color: #cc0000;
+  background-color: #c0392b;
 }
+
+
 
 /* Main content */
 main {
@@ -292,17 +332,7 @@ button:hover {
 }
 
 /* Estilos generales */
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f7fa;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
 
-main {
-  padding: 20px;
-}
 
 /* Botón agregar */
 .add-device-btn {
@@ -467,4 +497,41 @@ form input, form button {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 900px;
+}
+
+.semana {
+  border-top: 1px solid #ddd;
+  margin-top: 15px;
+  padding-top: 10px;
+}
+
+.semana h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.semana ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.semana ul li {
+  margin: 4px 0;
+  padding-left: 15px;
+  position: relative;
+}
+
+.semana ul li::before {
+  content: "⚡";
+  position: absolute;
+  left: 0;
 }
