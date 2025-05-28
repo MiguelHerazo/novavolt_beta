@@ -31,8 +31,6 @@ El repositorio está organizado de la siguiente manera:
 
 - **HTML5** y **CSS3**: Estructura y estilos de la aplicación.
 - **JavaScript**: Lógica y funcionalidades interactivas.
-- **Bootstrap** (opcional): Para diseño responsivo y componentes UI.
-- **Firebase** (opcional): Autenticación y almacenamiento de datos.
 
 ## 📦 Cómo comenzar
 
@@ -49,4 +47,10 @@ Este proyecto se desarrolla con fines educativos
 
 
 -  **Lead Designer:** **Miguel Herazo** – [@MiguelHerazo](https://github.com/MiguelHerazo)
+
+-  NovaVolt
+-  Gerónimo Castro
+-  Pablo Velazquez
+-  Samuel Espinosa
+-  Miguel Herazo
 
