@@ -45,16 +45,8 @@ El repositorio está organizado de la siguiente manera:
 
 2. **Abre `index.html`** en tu navegador para iniciar la aplicación.
 
-   > Nota: Para funcionalidades avanzadas como autenticación o base de datos, asegúrate de configurar correctamente los servicios asociados (por ejemplo, Firebase).
+Este proyecto se desarrolla con fines educativos 
 
-## 🤝 Contribuciones
 
-Las contribuciones son bienvenidas. Si deseas mejorar la aplicación o corregir errores, por favor:
+-  **Lead Designer:** **Miguel Herazo** – [@MiguelHerazo](https://github.com/MiguelHerazo)
 
-1. Haz un fork del repositorio.
-2. Crea una nueva rama para tus cambios.
-3. Realiza un pull request describiendo tus modificaciones.
-
-## 📄 Licencia
-
-Este proyecto se desarrolla con fines educativos y está disponible bajo la licencia [MIT](LICENSE).
