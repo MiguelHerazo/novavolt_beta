@@ -43,14 +43,16 @@ El repositorio está organizado de la siguiente manera:
 
 2. **Abre `index.html`** en tu navegador para iniciar la aplicación.
 
-Este proyecto se desarrolla con fines educativos 
+## Equipo del Proyecto
 
+Este proyecto se desarrolla con fines educativos.
 
--  **Lead Designer:** **Miguel Herazo** – [@MiguelHerazo](https://github.com/MiguelHerazo)
+- **Lead Designer:** **Miguel Herazo** – [@MiguelHerazo](https://github.com/MiguelHerazo)
 
--  NovaVolt
--  Gerónimo Castro
--  Pablo Velazquez
--  Samuel Espinosa
--  Miguel Herazo
+- **Equipo NovaVolt:**
+  - Gerónimo Castro
+  - Pablo Velazquez
+  - Samuel Espinosa
+  - Miguel Herazo
+
 
