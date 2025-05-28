@@ -13,110 +13,12 @@ body {
   padding-top: 70px;
 }
 
-/* Header/Navbar */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #004080;
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-header .nav-left {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-header .nav-left h1 {
-  font-size: 20px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.nav-links a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
 /* Session info a la derecha */
-/* HEADER */
-header {
-  background-color: #2c3e50;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-/* NAVBAR */
-.navbar {
-  display: flex;
-  gap: 15px;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-}
-
-.navbar a:hover,
-.navbar a.active {
-  background-color: #1abc9c;
-  color: white;
-}
-
-/* SESSION INFO */
 .session-info {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
-#logoutBtn {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#logoutBtn:hover {
-  background-color: #c0392b;
-}
-
 
 
 /* Main content */
@@ -330,9 +232,6 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
-/* Estilos generales */
-
 
 /* Botón agregar */
 .add-device-btn {

@@ -1,0 +1,59 @@
+/* navbar.css */
+
+nav {
+  background-color: #1f2937; /* gris oscuro tipo Tailwind */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+nav .nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #374151; /* gris más claro */
+}
+
+#logoutBtn {
+  background-color: #004080;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+#logoutBtn:hover {
+  background-color: #0066cc;
+}
+
+/* Ajusta el padding-top del main para que no quede oculto debajo del navbar */
+main {
+  padding-top: 80px; /* Ajusta este valor si tu navbar es más alta o más baja */
+}
